@@ -1,0 +1,77 @@
+.page_head {
+    height: 159px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000;
+}
+
+
+.page_container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.page_content {
+    padding: 0 10%;
+    background-color: #e5e5e5;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+
+.page_content::after {
+    content: url('./images/DJ.png');
+    z-index: 2;
+    display: inline-block;
+    position: absolute;
+    top: 1050px;
+
+}
+
+
+.content_about {
+    padding: 100px 0px;
+    z-index: 1;
+    p {
+        z-index: 10;
+    }
+
+}
+
+// .about_background {
+//     width: 80vw;
+//     height: 273.459px;
+//     transform: rotate(-18.17deg);
+//     border-radius: 944.745px;
+//     background: var(--mramor, #EDE2DE);
+//     filter: blur(200px);
+// }
+
+.why_content {
+    padding: 30px 0px 170px 0px;
+
+
+    h2 {
+        font-weight: 800;
+    }
+
+    li {
+        padding: 0;
+    }
+
+    ul {
+        padding: 0;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+
+    .page_content::after {
+        display: none;
+    }
+}

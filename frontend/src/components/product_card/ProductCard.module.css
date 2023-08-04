@@ -1,0 +1,39 @@
+.card_button button {
+  width: 230px;
+  font-size: 16px;
+  height: 55px;
+  border-radius: 10px;
+  background: rgba(237, 226, 222, 0.56);
+  transition: 0.3s;
+}
+.card_button button:hover {
+  background: rgba(173, 163, 158, 0.7);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 368px;
+  height: 500px;
+  border-radius: 10px;
+  margin: 0 20px;
+  text-align: center;
+  background: rgba(121, 121, 121, 0.4);
+}
+
+@media (max-width: 1048px) {
+  .card {
+    margin: 15px 0;
+  }
+}
+@media (max-width: 600px) {
+  .card {
+    margin: 15px 0;
+    width: 300px;
+  }
+  .card_photo img {
+    width: 80%;
+  }
+}/*# sourceMappingURL=ProductCard.module.css.map */

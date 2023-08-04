@@ -1,0 +1,34 @@
+
+.footer {
+    width: 100%;
+    flex: 0 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .contact_list {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+    }
+}
+
+.contact_item {
+    margin: 0 50px;
+
+    img {
+        width: 70px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact_item {
+        margin: 0 25px;
+        img {
+          width: 50px;
+        }
+    }
+}

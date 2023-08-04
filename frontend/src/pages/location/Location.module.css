@@ -1,0 +1,37 @@
+.page_container {
+  min-height: 669px;
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page_head {
+  height: 159px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.yandex_map {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 550px;
+}
+
+.map_address {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .yandex_map {
+    width: 320px;
+  }
+}/*# sourceMappingURL=Location.module.css.map */

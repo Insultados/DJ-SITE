@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Evolventa;
+    src: url('./fonts/Evolventa-Regular.ttf');
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    height: 100%;
+    font-family: Evolventa;
+    overflow-x: hidden;
+    
+}
+
+* {
+    border: none;
+    box-shadow: none;
+    font-family: Evolventa;
+
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    flex: 0 0 auto;
+    position: fixed;
+    background-color: white;
+    z-index: 999999999999999999999999999999999999999999999900000000;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    flex-shrink: 0;
+}
