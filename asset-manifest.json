@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/DJ-SITE/static/css/main.23e19776.css",
+    "main.js": "/DJ-SITE/static/js/main.bcab6212.js",
+    "static/media/Ellipse 9.png": "/DJ-SITE/static/media/Ellipse 9.92ff02b2703616b3d060.png",
+    "static/media/png.png": "/DJ-SITE/static/media/png.e38067dc912cd620bbd9.png",
+    "static/media/Evolventa-Regular.ttf": "/DJ-SITE/static/media/Evolventa-Regular.bea4dadebf6ff7f13e29.ttf",
+    "static/media/image13.png": "/DJ-SITE/static/media/image13.1eaa35572bcf3fb1fc47.png",
+    "static/media/DJ.png": "/DJ-SITE/static/media/DJ.fdc8547068e56f57deb0.png",
+    "index.html": "/DJ-SITE/index.html",
+    "main.23e19776.css.map": "/DJ-SITE/static/css/main.23e19776.css.map",
+    "main.bcab6212.js.map": "/DJ-SITE/static/js/main.bcab6212.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.23e19776.css",
+    "static/js/main.bcab6212.js"
+  ]
+}
