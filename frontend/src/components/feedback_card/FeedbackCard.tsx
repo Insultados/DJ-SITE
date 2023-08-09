@@ -12,10 +12,10 @@ function FeedbackCard(props:CardProps) {
   return (
     <form action="" method="get" className={classes.reviews}>
       <div className={classes.feedback_form}>
-        <input readOnly placeholder={props.name} type="text" name="name" id="name" required />
+        <input key={props.name} readOnly placeholder={props.name} type="text" name="name" id="name" required />
       </div>
       <div className={classes.feedback_form}>
-        <input readOnly placeholder={props.product} type="text" name="text" id="text" required />
+        <input key={props.product} readOnly placeholder={props.product} type="text" name="text" id="text" required />
       </div>
       <div className={classes.feedback_form}>
         <textarea readOnly placeholder={props.feedback} name="text" id="text" required />

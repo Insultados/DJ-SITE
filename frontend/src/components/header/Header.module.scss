@@ -21,10 +21,14 @@
     justify-content: center;
     margin-right: 5%;
 
-    a {
+    p {
         text-decoration: none;
         color: black;
         margin: 0 20px;
+    }
+
+    p:hover {
+        cursor: pointer;
     }
 
 }
