@@ -90,16 +90,18 @@
   margin-left: 100px;
 }
 
+@media (max-width: 800px) {
+  .feedback_form textarea {
+    width: 250px;
+    height: 250px;
+  }
+  .feedback_form input {
+    width: 250px;
+  }
+}
 @media (max-width: 600px) {
   .textarea_label {
     margin-left: 0px;
-  }
-  .feedback_form input,
-  .feedback_form textarea {
-    width: 250px;
-  }
-  .feedback_form textarea {
-    height: 250px;
   }
   .feedback_button {
     align-items: center;
