@@ -4,7 +4,7 @@ import phone from './images/phone.png'
 import email from './images/email.png'
 import address from './images/address.png'
 import { useState } from "react"
-import Modal from "../Modal/Modal";
+import Modal from "../modal/Modal";
 import Login from "../../auth/login/Login";
 
 const Footer = () => {

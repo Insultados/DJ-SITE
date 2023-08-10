@@ -40,10 +40,12 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .feedback_form label,
 .feedback_button label {
   margin-top: 15px;
 }
+
 .feedback_form input,
 .feedback_button input {
   width: 430px;
@@ -54,6 +56,7 @@
   padding: 0 10px;
   font-size: 18px;
 }
+
 .feedback_form textarea,
 .feedback_button textarea {
   width: 630px;
@@ -72,6 +75,7 @@
   display: flex;
   align-items: end;
 }
+
 .feedback_button input {
   width: 200px;
   color: #000;
@@ -82,6 +86,7 @@
   letter-spacing: 2.2px;
   transition: 0.3s;
 }
+
 .feedback_button input:hover {
   background: rgba(173, 163, 158, 0.7);
 }
@@ -95,20 +100,26 @@
     width: 250px;
     height: 250px;
   }
+
   .feedback_form input {
     width: 250px;
   }
 }
+
 @media (max-width: 600px) {
   .textarea_label {
     margin-left: 0px;
   }
+
   .feedback_button {
     align-items: center;
     justify-content: center;
   }
+
   .feedback_button input,
   .feedback_button textarea {
     width: 150px;
   }
-}/*# sourceMappingURL=Feedback.module.css.map */
+}
+
+/*# sourceMappingURL=Feedback.module.css.map */
