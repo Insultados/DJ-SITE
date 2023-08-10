@@ -38,8 +38,7 @@ def getAllReviews():
 @ cross_origin(supports_credentials=True)
 def appendReviews():
     json = request.json # Получаем данные которые нужно добавить в базу
-    reviews = json["answer"]['reviews']
-    print(reviews)
+    reviews = json
     try:
         cursor.execute(f"INSERT INTO reviews (name, product_name, review) VALUES (?, ?, ?)", reviews) # Добавляем данные в базу
         con.commit() # Подтверждаем изменение в базе данных

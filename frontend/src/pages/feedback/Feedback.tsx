@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import classes from './Feedback.module.css'
 import FeedbackCard from "../../components/feedback_card/FeedbackCard";
 import { Fade, Slide } from "react-awesome-reveal";
 import { useState } from "react";
-// import useFetch from "../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 
 const Feedback = () => {
@@ -18,10 +18,25 @@ const Feedback = () => {
     setForm({ ...form, [event.currentTarget.name]: event.currentTarget.value })
   }
 
-  const showState = () => {
-    console.log(form)
-    return form
+  const url = 'http://localhost:8080/reviews/'
+  const showState = async () => {
+
+    console.log('Submitting form')
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify([form.name, form.product_name, form.review])
+    }).then(function (response) {
+      console.log(response)
+      return response.json()
+    })
+    console.log('Form submitted.')
+    alert('Ваш отзыв успешно отправлен!')
   }
+
+  const responseData = useFetch(url);
+  const [posts]: any | any[] = Object.values(responseData)
+  console.log(posts)
 
 
   return (
@@ -57,9 +72,19 @@ const Feedback = () => {
         <br />
 
         <h2>Наши отзывы!</h2>
-        <Fade triggerOnce cascade damping={0.25}>
-          <FeedbackCard name={'Мария'} product={'Фассад Бифлекс'} feedback={'Отличный товар! Хорошее качество и своевременная доставка!'} />
-          <FeedbackCard name={'Елена'} product={'Фассад Бифлекс'} feedback={'Отличный товар! Хорошее качество и своевременная доставка!'} />
+        <Fade triggerOnce cascade damping={0.05}>
+          {(Array.isArray(posts))
+            ? posts.map((e: any | any[], index: number) => (
+              (posts !== null && e !== '')
+                ? <div key={index} className={classes.news_item}>
+                  <FeedbackCard name={posts[posts.length-1-index][0]} product={posts[posts.length-1-index][1]} feedback={posts[posts.length-1-index][2]} />
+
+                </div>
+                : <></>
+
+            ))
+            : <></>
+          }
         </Fade>
       </div>
     </div>
