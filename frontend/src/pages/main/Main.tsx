@@ -14,7 +14,7 @@ const Main = () => {
                 </Slide>
                 <Fade triggerOnce cascade damping={0.25}>
                     <Link activeClass="active" className="about" to="about_head" spy={true} smooth={true} duration={500}><button className={classes.btn_about}>Подробнее</button></Link>
-                        <Link activeClass="active" className="contact" to="contact_head" spy={true} smooth={true} duration={500}><button className={classes.btn_contact}>Оставить заявку</button></Link>
+                        <Link activeClass="active" className="contact_us" to="contact_head" spy={true} smooth={true} duration={500}><button className={classes.btn_contact}>Оставить заявку</button></Link>
                         </Fade>
                     </div>
                     <div className={classes.page_photo}>

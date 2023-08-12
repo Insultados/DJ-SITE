@@ -43,14 +43,6 @@
 .page_content .btn_contact {
   width: 400px;
 }
-.page_content .btn_contact::after {
-  content: url("./images/Ellipse 9.png");
-  z-index: 4;
-  display: inline-block;
-  position: absolute;
-  top: 1050px;
-  right: 0px;
-}
 
 button:hover {
   background: rgba(173, 163, 158, 0.7);

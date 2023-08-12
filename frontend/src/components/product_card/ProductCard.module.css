@@ -10,6 +10,23 @@
   background: rgba(173, 163, 158, 0.7);
 }
 
+.delete_product_button {
+  z-index: 1000;
+  display: none;
+  transition: 0.3s;
+  margin-bottom: 15px;
+  width: 120px;
+  font-size: 14px;
+  height: 30px;
+  border-radius: 10px;
+  background: rgba(237, 226, 222, 0.56);
+  transition: 0.3s;
+}
+
+.card:hover .delete_product_button {
+  display: block;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -21,6 +38,7 @@
   margin: 0 20px;
   text-align: center;
   background: rgba(121, 121, 121, 0.4);
+  transition: 0.3s;
 }
 
 @media (max-width: 1048px) {

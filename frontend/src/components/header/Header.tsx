@@ -13,12 +13,9 @@ const Header = () => {
             </div>
             <div className={classes.header_nav}>
                 <div className={classes.nav}>
-                    <Link activeClass="active" className="about" to="about_head" spy={true} smooth={true} duration={500}><p>О компании</p></Link>
-                    <Link activeClass="active" className="products" to="products_head" spy={true} smooth={true} duration={500}><p>Товары</p></Link>
-                    <Link activeClass="active" className="contact_us" to="contact_head" spy={true} smooth={true} duration={500}><p>Оставить заявку</p></Link>
-                    {window.location.pathname === '/admin' && (
-                        <p onClick={() => alert('хуй успешно отсосан')}>Отсосать хуй</p>
-                    )}
+                    <Link activeClass="active" className="to_about" to="about_head" spy={true} smooth={true} duration={500}><p>О компании</p></Link>
+                    <Link activeClass="active" className="to_products" to="products_head" spy={true} smooth={true} duration={500}><p>Товары</p></Link>
+                    <Link activeClass="active" className="to_contact_us" to="contact_head" spy={true} smooth={true} duration={500}><p>Оставить заявку</p></Link>
                 </div>
             </div>
         </header>

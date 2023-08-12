@@ -27,7 +27,6 @@ const Feedback = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify([form.name, form.product_name, form.review])
     }).then(function (response) {
-      console.log(response)
       return response.json()
     })
     console.log('Form submitted.')
@@ -36,7 +35,6 @@ const Feedback = () => {
 
   const responseData = useFetch(url);
   const [posts]: any | any[] = Object.values(responseData)
-  console.log(posts)
 
 
   return (
@@ -77,7 +75,7 @@ const Feedback = () => {
             ? posts.map((e: any | any[], index: number) => (
               (posts !== null && e !== '')
                 ? <div key={index} className={classes.news_item}>
-                  <FeedbackCard name={posts[posts.length-1-index][0]} product={posts[posts.length-1-index][1]} feedback={posts[posts.length-1-index][2]} />
+                  <FeedbackCard name={posts[posts.length - 1 - index][0]} product={posts[posts.length - 1 - index][1]} feedback={posts[posts.length - 1 - index][2]} />
 
                 </div>
                 : <></>
