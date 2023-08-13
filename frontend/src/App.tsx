@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css'
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
@@ -11,14 +11,17 @@ import Feedback from './pages/feedback/Feedback';
 
 
 function App() {
+
+  const [productName, setProductName] = useState("")
+
   return (
     <div className="App">
       <Header />
       <main>
         <Main />
         <About />
-        <Products />
-        <Contact />
+        <Products productName={productName} setProductName={setProductName} />
+        <Contact  productName={productName} setProductName={setProductName} />
         <Location />
         <Feedback />
       </main>

@@ -61,7 +61,7 @@ const Feedback = () => {
           </Fade>
           <Slide damping={0.25} triggerOnce cascade direction={"up"} >
             <div className={classes.feedback_button}>
-              <input type="button" value="Отправить" onClick={showState} />
+              <input type="submit" value="Отправить" onClick={showState} />
             </div>
           </Slide>
         </form>

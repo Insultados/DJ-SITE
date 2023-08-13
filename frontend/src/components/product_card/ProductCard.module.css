@@ -12,7 +12,6 @@
 
 .delete_product_button {
   z-index: 1000;
-  display: none;
   transition: 0.3s;
   margin-bottom: 15px;
   width: 120px;
@@ -35,13 +34,13 @@
   width: 368px;
   height: 500px;
   border-radius: 10px;
-  margin: 0 20px;
+  margin: 20px 20px;
   text-align: center;
   background: rgba(121, 121, 121, 0.4);
   transition: 0.3s;
 }
 
-@media (max-width: 1048px) {
+@media (max-width: 120px) {
   .card {
     margin: 15px 0;
   }

@@ -1,3 +1,4 @@
+import { Link } from 'react-scroll/modules'
 import classes from './ProductCard.module.css'
 
 type CardProps = {
@@ -5,6 +6,8 @@ type CardProps = {
   product_info: string
   product_price: string
   product_image: string
+  contactProductName?:string
+  setContactProductName?:any
 }
 
 const deleteProduct = async (event: any) => {
@@ -19,6 +22,7 @@ const deleteProduct = async (event: any) => {
   })
 
   alert('Товар успешно удален!')
+  window.location.reload()
 }
 
 function Card(props: CardProps) {
@@ -26,7 +30,7 @@ function Card(props: CardProps) {
     <div className={classes.card}>
       {window.location.pathname === '/admin' &&
         (
-          <button onClick={deleteProduct} name={props.product_name} className={classes.delete_product_button} type="button" >
+          <button type="submit" onClick={deleteProduct} name={props.product_name} className={classes.delete_product_button} >
             Удалить товар
           </button>
         )}
@@ -39,7 +43,9 @@ function Card(props: CardProps) {
 
       </div>
       <div className={classes.card_button}>
-        <button>Стоимость: от {props.product_price} р</button>
+        <Link activeClass="active" className="to_contact_us" to="contact_head" spy={true} smooth={true} duration={500}>
+          <button onClick={() => {props.setContactProductName(props.product_name); console.log(props.contactProductName)}}>Стоимость: от {props.product_price} р</button>
+        </Link>
       </div>
     </div>
 

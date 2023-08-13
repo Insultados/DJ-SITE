@@ -30,8 +30,24 @@
   align-items: center;
 }
 
+.reviews {
+  border-radius: 10px;
+}
 .reviews div {
   margin: 15px 0;
+}
+
+.delete_review_button {
+  z-index: 1000;
+  transition: 0.3s;
+  margin-bottom: 15px;
+  width: 120px;
+  font-size: 14px;
+  height: 30px;
+  border-radius: 10px;
+  background: rgba(237, 226, 222, 0.56);
+  border: 0.5px solid #000;
+  transition: 0.3s;
 }
 
 .feedback_form,
@@ -81,7 +97,6 @@
   resize: none;
   line-height: 1.5rem;
   padding: 10px;
-  margin-bottom: 50px;
 }
 
 .feedback_button {

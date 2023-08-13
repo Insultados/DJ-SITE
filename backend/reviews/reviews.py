@@ -34,8 +34,10 @@ def getAllReviews():
     cursor.execute("SELECT * FROM reviews") # Запрашиваем все данные с базы
     lock.release()
     reviews = {'reviews': []}
+    lock.acquire(True)
     for item in cursor.fetchall():
         reviews['reviews'].append(list(item)) # Добавляем данные на сервер
+    lock.release()
     con.commit() # Подтверждаем изменение в базе данных
     return jsonify(reviews) # Отдаем клиентской части данные из базы
 
@@ -62,7 +64,7 @@ def appendReviews():
 def deleteReviews():
     json = request.json # Получаем данные, которые нужно удалить в базе
     lock.acquire(True)
-    cursor.execute(f"DELETE FROM reviews WHERE name_id=?", (json,)) # Удаляем данные из базы
+    cursor.execute(f"DELETE FROM reviews WHERE name=?", (json,)) # Удаляем данные из базы
     lock.release()
     con.commit() # Подтверждаем изменение в базе данных
     return jsonify(json)

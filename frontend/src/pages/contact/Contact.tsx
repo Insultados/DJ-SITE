@@ -3,9 +3,13 @@ import classes from './Contact.module.css'
 import { Fade, Slide } from "react-awesome-reveal";
 import { useState } from 'react';
 
+type ContactProps = {
 
+    productName: string
+    setProductName: any
+}
 
-const Contact = () => {
+const Contact = (props: ContactProps) => {
 
     const [form, setForm] = useState({
         name: '',
@@ -15,6 +19,9 @@ const Contact = () => {
       })
     
       const changeHandler = (event: React.FormEvent<HTMLInputElement>) => {
+        if (event.currentTarget.name === "product_name") {
+            props.setProductName(event.currentTarget.value)
+        }
         setForm({ ...form, [event.currentTarget.name]: event.currentTarget.value })
       }
 
@@ -46,12 +53,12 @@ const Contact = () => {
                         </div>
                         <div className={classes.contact_form}>
                             <label>Название товара: </label>
-                            <input onChange={changeHandler} type="product_name" name="product_name" id="product_name" required />
+                            <input onChange={changeHandler} type="product_name" name="product_name" id="product_name" value={props.productName} required />
                         </div>
                     </Fade>
                     <Slide cascade triggerOnce damping={0.25}>
                         <div className={classes.contact_button}>
-                            <input type="button" value="Отправить" onClick={showState} />
+                            <input type="submit" value="Отправить" onClick={showState} />
 
                         </div>
                     </Slide>

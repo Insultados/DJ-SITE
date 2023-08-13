@@ -5,8 +5,13 @@ import { Fade } from "react-awesome-reveal";
 import Modal from "../../components/modal/Modal";
 import useFetch from "../../hooks/useFetch";
 
+type ProductProps = {
 
-const Products = () => {
+    productName: string
+    setProductName: any
+}
+
+const Products = (props: ProductProps) => {
 
     const [isModalActive, setModalActive] = useState(false);
 
@@ -56,8 +61,6 @@ const Products = () => {
     const url = 'http://localhost:8080/products/'
     const showState = async () => {
 
-        console.log(JSON.stringify([form.product_name, form.product_info, form.product_price,]))
-
         console.log('Submitting form')
         fetch(url, {
             method: 'POST',
@@ -71,6 +74,7 @@ const Products = () => {
 
         console.log('Form submitted.')
         alert('Ваш товар успешно Добавлен')
+        window.location.reload()
     }
 
 
@@ -89,7 +93,7 @@ const Products = () => {
                         ? products.map((e: any | any[], index: number) => (
                             (products !== null && e !== '')
                                 ?
-                                <Card key={index} product_name={products[products.length - 1 - index][0]} product_info={products[products.length - 1 - index][1]} product_price={products[products.length - 1 - index][2]} product_image={products[products.length - 1 - index][3]} />
+                                <Card contactProductName={props.productName} setContactProductName={props.setProductName} key={index} product_name={products[products.length - 1 - index][0]} product_info={products[products.length - 1 - index][1]} product_price={products[products.length - 1 - index][2]} product_image={products[products.length - 1 - index][3]} />
                                 : <p>На данный момент нет доступных товаров</p>
 
                         ))
@@ -142,8 +146,6 @@ const Products = () => {
                                     id="product_image"
                                     required
                                 />
-
-
 
                             </div>
                             <div className={classes.add_product_form_button}>
