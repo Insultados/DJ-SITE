@@ -1,6 +1,7 @@
 import { Link } from 'react-scroll/modules'
 import classes from './ProductCard.module.css'
-import User from '../../auth/admin/Admin'
+
+
 type CardProps = {
   product_name: string
   product_info: string

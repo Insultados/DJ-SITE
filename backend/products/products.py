@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from flask_cors import cross_origin
-from reviews.reviews import application, cursor, con, cross_origin, lock, checkToken
+from app import application, cursor, con, checkToken, lock
 
 
 try: # Создаем таблицу в базе данных, если ее не существует

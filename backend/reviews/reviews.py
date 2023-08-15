@@ -1,21 +1,9 @@
-import sqlite3;
-from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
-from threading import Lock
-from firebase_admin import auth, credentials
-import firebase_admin
-
-cred = credentials.Certificate('./backend/account_key/dj-site-28442-firebase-adminsdk-7z5gy-86a87954a0.json')
-firebase_admin.initialize_app(cred)
-
-lock = Lock()
-
-application = Flask(__name__)
-CORS(application, support_credentials=True) # Разрешаем предоставлять данные клиентской части приложения
+from app import application, cursor, con, lock, checkToken
+from flask import request, jsonify
+from flask_cors import cross_origin
 
 
-con = sqlite3.connect("backend/metanit.db", check_same_thread=False) # Присоединяемся к базе данных
-cursor = con.cursor() # Курсор к базе данных (объект доступа к данным)
+ # Курсор к базе данных (объект доступа к данным)
  
 try: # Создаем таблицу в базе данных, если ее не существует
     cursor.execute("""CREATE TABLE reviews
@@ -27,18 +15,6 @@ try: # Создаем таблицу в базе данных, если ее н�
             """)
 except: 
     pass
-
-
-def checkToken(token):
-    page = auth.list_users()
-    while page:
-      for user in page.users:
-          if (user.uid == auth.verify_id_token(token)['uid']):
-              return True
-      page = page.get_next_page()
-
-    return False
-    
 
 
 # GET запрос на сервер к получению данных с базы

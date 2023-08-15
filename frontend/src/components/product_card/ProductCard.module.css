@@ -39,6 +39,10 @@
   background: rgba(121, 121, 121, 0.4);
   transition: 0.3s;
 }
+.card img {
+  width: 305px;
+  height: 258px;
+}
 
 @media (max-width: 120px) {
   .card {
