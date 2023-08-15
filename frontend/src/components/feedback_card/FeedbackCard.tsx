@@ -2,30 +2,34 @@ import React from 'react';
 import classes from './FeedbackCard.module.css'
 
 
+
+
 type CardProps = {
   name: string
   product: string
   feedback: string
+  token?: string
 }
-
-const deleteReview = async (event: any) => {
-
-  const url = 'http://localhost:8080/reviews/'
-  fetch(url, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(event.currentTarget.name)
-  }).then(function (response) {
-    return response.json()
-  })
-
-  alert('Отзыв успешно удален!')
-  window.location.reload()
-
-}
-
 
 function FeedbackCard(props: CardProps) {
+
+  const deleteReview = async (event: any) => {
+
+
+    const url = 'http://localhost:8080/reviews/'
+    fetch(url, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: props.token, name: event.currentTarget.name })
+    }).then(function (response) {
+      return response.json()
+    })
+
+    alert('Отзыв успешно удален!')
+    window.location.reload()
+
+  }
+
   return (
 
     <form action="" method="get" className={classes.reviews}>
@@ -42,7 +46,7 @@ function FeedbackCard(props: CardProps) {
         <input key={props.product} readOnly placeholder={props.product} type="text" name="text" id={"product_" + props.product} required />
       </div>
       <div className={classes.feedback_form}>
-        <textarea readOnly placeholder={props.feedback} name="text" id="text" required />
+        <textarea readOnly placeholder={props.feedback} name="text" id={"client_review" + props.product} required />
       </div>
     </form>
   );

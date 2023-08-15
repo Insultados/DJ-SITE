@@ -5,8 +5,10 @@ import { Fade, Slide } from "react-awesome-reveal";
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 
-
-const Feedback = () => {
+type FeedbackProps = {
+  token?:string
+}
+const Feedback = (props: FeedbackProps) => {
 
   const [form, setForm] = useState({
     name: '',
@@ -75,8 +77,7 @@ const Feedback = () => {
             ? posts.map((e: any | any[], index: number) => (
               (posts !== null && e !== '')
                 ? <div key={index} className={classes.news_item}>
-                  <FeedbackCard name={posts[posts.length - 1 - index][0]} product={posts[posts.length - 1 - index][1]} feedback={posts[posts.length - 1 - index][2]} />
-
+                  <FeedbackCard token={props.token} name={posts[posts.length - 1 - index][0]} product={posts[posts.length - 1 - index][1]} feedback={posts[posts.length - 1 - index][2]} />
                 </div>
                 : <></>
 

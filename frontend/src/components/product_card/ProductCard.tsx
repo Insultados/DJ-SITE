@@ -1,31 +1,35 @@
 import { Link } from 'react-scroll/modules'
 import classes from './ProductCard.module.css'
-
+import User from '../../auth/admin/Admin'
 type CardProps = {
   product_name: string
   product_info: string
   product_price: string
   product_image: string
-  contactProductName?:string
-  setContactProductName?:any
+  contactProductName?: string
+  setContactProductName?: any
+  token?: string
 }
 
-const deleteProduct = async (event: any) => {
-
-  const url = 'http://localhost:8080/products/'
-  fetch(url, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(event.currentTarget.name)
-  }).then(function (response) {
-    return response.json()
-  })
-
-  alert('Товар успешно удален!')
-  window.location.reload()
-}
 
 function Card(props: CardProps) {
+
+  const deleteProduct = async (event: any) => {
+
+
+    const url = 'http://localhost:8080/products/'
+    fetch(url, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: props.token, name: event.currentTarget.name })
+    }).then(function (response) {
+      return response.json()
+    })
+
+    alert('Товар успешно удален!')
+    window.location.reload()
+  }
+
   return (
     <div className={classes.card}>
       {window.location.pathname === '/admin' &&
@@ -44,7 +48,7 @@ function Card(props: CardProps) {
       </div>
       <div className={classes.card_button}>
         <Link activeClass="active" className="to_contact_us" to="contact_head" spy={true} smooth={true} duration={500}>
-          <button onClick={() => {props.setContactProductName(props.product_name); console.log(props.contactProductName)}}>Стоимость: от {props.product_price} р</button>
+          <button onClick={() => { props.setContactProductName(props.product_name); console.log(props.contactProductName) }}>Стоимость: от {props.product_price} р</button>
         </Link>
       </div>
     </div>

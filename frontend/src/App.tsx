@@ -9,8 +9,11 @@ import Contact from './pages/contact/Contact';
 import Location from './pages/location/Location';
 import Feedback from './pages/feedback/Feedback';
 
+type appProps = {
+  token?: string
+}
 
-function App() {
+function App(props:appProps) {
 
   const [productName, setProductName] = useState("")
 
@@ -20,10 +23,10 @@ function App() {
       <main>
         <Main />
         <About />
-        <Products productName={productName} setProductName={setProductName} />
+        <Products token={props.token} productName={productName} setProductName={setProductName} />
         <Contact  productName={productName} setProductName={setProductName} />
         <Location />
-        <Feedback />
+        <Feedback token={props.token} />
       </main>
       <Footer />
     </div>

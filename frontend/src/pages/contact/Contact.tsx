@@ -41,7 +41,7 @@ const Contact = (props: ContactProps) => {
                     <Fade triggerOnce cascade damping={0.25}>
                         <div className={classes.contact_form}>
                             <label >ФИО </label>
-                            <input onChange={changeHandler} type="name" name="name" id="name" required />
+                            <input onChange={changeHandler} type="name" name="name" id="client_name" required />
                         </div>
                         <div className={classes.contact_form}>
                             <label>Номер телефона </label>
@@ -53,7 +53,7 @@ const Contact = (props: ContactProps) => {
                         </div>
                         <div className={classes.contact_form}>
                             <label>Название товара: </label>
-                            <input onChange={changeHandler} type="product_name" name="product_name" id="product_name" value={props.productName} required />
+                            <input onChange={changeHandler} type="product_name" name="product_name" id="contact_product_name" value={props.productName} required />
                         </div>
                     </Fade>
                     <Slide cascade triggerOnce damping={0.25}>

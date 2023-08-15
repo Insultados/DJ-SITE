@@ -10,6 +10,7 @@ export default function User() {
   let navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     if (!isLoggedIn()) {
@@ -18,8 +19,10 @@ export default function User() {
 
     let session: any = getSession();
     setEmail(session.email);
+    setToken(session.accessToken)
 
     console.log("Your access token is: " + session.accessToken);
+
   }, [navigate]);
 
   const onLogout = () => {
@@ -29,7 +32,7 @@ export default function User() {
 
   return (
     <>
-      <App />
+      <App token={token} />
       <div className={classes.user_container}>
         <p>Вы вошли как: {email} </p>
         <button onClick={onLogout} >
@@ -39,3 +42,4 @@ export default function User() {
     </>
   )
 }
+

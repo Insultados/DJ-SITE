@@ -4,12 +4,18 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import Login from './auth/login/Login';
 import User from './auth/admin/Admin';
 import ErrorPage from './error-page';
+import { useState } from 'react';
 
 
-
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   {
     path: "/",
+    element: <Navigate to="/main" />,
+    errorElement: <ErrorPage />,  // new
+  },
+  {
+    path: "/DJ-SITE",
     element: <Navigate to="/main" />,
     errorElement: <ErrorPage />,  // new
   },

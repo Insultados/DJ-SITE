@@ -1,9 +1,12 @@
 import sqlite3;
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
-import time
-import os
 from threading import Lock
+from firebase_admin import auth, credentials
+import firebase_admin
+
+cred = credentials.Certificate('./backend/account_key/dj-site-28442-firebase-adminsdk-7z5gy-86a87954a0.json')
+firebase_admin.initialize_app(cred)
 
 lock = Lock()
 
@@ -24,6 +27,18 @@ try: # Создаем таблицу в базе данных, если ее н�
             """)
 except: 
     pass
+
+
+def checkToken(token):
+    page = auth.list_users()
+    while page:
+      for user in page.users:
+          if (user.uid == auth.verify_id_token(token)['uid']):
+              return True
+      page = page.get_next_page()
+
+    return False
+    
 
 
 # GET запрос на сервер к получению данных с базы
@@ -62,9 +77,15 @@ def appendReviews():
 @ application.route('/reviews/', methods=['DELETE'])
 @ cross_origin(supports_credentials=True)
 def deleteReviews():
-    json = request.json # Получаем данные, которые нужно удалить в базе
-    lock.acquire(True)
-    cursor.execute(f"DELETE FROM reviews WHERE name=?", (json,)) # Удаляем данные из базы
-    lock.release()
-    con.commit() # Подтверждаем изменение в базе данных
-    return jsonify(json)
+
+    json = request.json # Получаем данные, которые нужно удалить в базе    lock.acquire(True)
+
+    if (checkToken(json['token'])):
+        lock.acquire(True)
+        cursor.execute(f"DELETE FROM reviews WHERE name=?", (json['name'],)) # Удаляем данные из базы
+        lock.release()
+        con.commit() # Подтверждаем изменение в базе данных
+        return jsonify(json['name'])
+    else: 
+      return jsonify({'error': 'Ошибка удаления! Проверьте корректность вашего токена'})
+  

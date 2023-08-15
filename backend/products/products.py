@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from flask_cors import cross_origin
-from reviews.reviews import application, cursor, con, cross_origin, lock
+from reviews.reviews import application, cursor, con, cross_origin, lock, checkToken
 
 
 try: # Создаем таблицу в базе данных, если ее не существует
@@ -44,15 +44,17 @@ def getAllProducts():
 def appendProducts():
     json = request.json # Получаем данные которые нужно добавить в базу
     products = json
-    print(products)
-    try:
-        lock.acquire(True)
-        cursor.execute(f"INSERT INTO products (name, info, price, photo) VALUES (?, ?, ?, ?)", products) # Добавляем данные в базу
-        con.commit() # Подтверждаем изменение в базе данных
-        lock.release()
-        return jsonify(products)
-    except:
-        return jsonify({"error": "Пользователь с таким же ФИО уже существует!"})
+    if (checkToken(products['token'])):
+        try:
+            lock.acquire(True)
+            cursor.execute(f"INSERT INTO products (name, info, price, photo) VALUES (?, ?, ?, ?)", products['data']) # Добавляем данные в базу
+            con.commit() # Подтверждаем изменение в базе данных
+            lock.release()
+            return jsonify(products['data'])
+        except:
+            return jsonify({"error": "Пользователь с таким же ФИО уже существует!"})
+    else: 
+        return jsonify({'error': 'Ошибка обавления товара! Проверьте корректность вашего токена'})
 
     
 
@@ -60,9 +62,13 @@ def appendProducts():
 @ application.route('/products/', methods=['DELETE'])
 @ cross_origin(supports_credentials=True)
 def deleteProducts():
-    json = request.json # Получаем данные, которые нужно удалить в базе
-    lock.acquire(True)
-    cursor.execute(f"DELETE FROM products WHERE name=?", (json,)) # Удаляем данные из базы
-    lock.release()
-    con.commit() # Подтверждаем изменение в базе данных
-    return jsonify(json)
+    json = request.json # Получаем данные, которые нужно удалить в базе    lock.acquire(True)
+    if (checkToken(json['token'])):
+        lock.acquire(True)
+        cursor.execute(f"DELETE FROM products WHERE name=?", (json['name'],)) # Удаляем данные из базы
+        lock.release()
+        con.commit() # Подтверждаем изменение в базе данных
+        return jsonify(json['name'])
+    else: 
+      return jsonify({'error': 'Ошибка удаления! Проверьте корректность вашего токена'})
+  
